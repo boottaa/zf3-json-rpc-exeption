@@ -28,19 +28,17 @@ class JsonController extends AbstractActionController
 		{
 			file_put_contents($dirlog."/logicError.log", $d->getMessage().PHP_EOL, FILE_APPEND);
 		}
-		catch (\Exception $e)
-		{
-			file_put_contents($dirlog."/error.log", $e->getMessage().PHP_EOL, FILE_APPEND);
-		}
-        
-
+		catch (\Exception $e) {
+            file_put_contents($dirlog . "/error.log", $e->getMessage() . PHP_EOL, FILE_APPEND);
+        }
 		die();
 	}
 
 	//Client
     public function clientAction()
     {
-        $client = new \Zend\Json\Server\Client("http://ex.dev/jsonrpc");
+
+        $client = new \Zend\Json\Server\Client("http://{$_SERVER['HTTP_HOST']}/jsonrpc");
 
         $client->call('subtract', [12, 13]);
 

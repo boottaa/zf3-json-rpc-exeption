@@ -20,10 +20,9 @@ return array(
 			'album' => array(
 				'type' => Segment::class,
 				'options' => array(
-					'route'    => '/jsonrpc[/:action][/:id]',
+					'route'    => '/jsonrpc[/:action]',
 					'constraints' => array(
 						'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-						'id'     => '[0-9]+',
 					),
 
 					'defaults' => array(
